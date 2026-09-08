@@ -1,6 +1,6 @@
 """
 @cross-cutting
-@module islemesh.islemesh_parse
+@module islemesh.custom.islemesh_parse
 
 Stdlib-pure parsers: isle-mesh's native artifacts → row dicts.
 
@@ -19,7 +19,7 @@ into treeObject rows; `pol isle sync` posts the raw artifacts.
 
 @consumers
   - islemesh.islemesh_api (ingest endpoints)
-  - islemesh.selftest_islemesh
+  - islemesh.islemesh_selftest
 """
 
 import re

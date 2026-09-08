@@ -2,8 +2,8 @@
 Selftest for the islemesh module (mac-1).
 
 Run from polari-framework/:
-    python3 -m islemesh.selftest_islemesh        (container root)
-    PYTHONPATH=modules python3 -m islemesh.selftest_islemesh (host)
+    python3 -m islemesh.islemesh_selftest        (container root)
+    PYTHONPATH=modules python3 -m islemesh.islemesh_selftest (host)
 
 Stdlib-only: parsers + mock payloads + vocabulary coherence — no
 DB, no falcon, no treeObject machinery. Covers: registry parsing
@@ -16,13 +16,13 @@ and that the mock exercises the REAL parse pipeline.
 
 import json
 
-from islemesh.islemesh_constants import (
+from islemesh.custom.islemesh_constants import (
     AVAILABILITY_MODES, CONNECTIVITY_MODES, DOWN_TRIGGERS,
     INGEST_KINDS, MOCK_BANNER, PACKAGE_KINDS, PERMIT_PROTOCOLS,
     PLACEMENTS, REALIZATION_KINDS, UP_TRIGGERS, UPLINK_KINDS,
 )
-from islemesh.islemesh_mock import mock_ingests, mock_realizations
-from islemesh.islemesh_parse import (
+from islemesh.custom.islemesh_mock import mock_ingests, mock_realizations
+from islemesh.custom.islemesh_parse import (
     parse_fragment, parse_fragments, parse_registry,
 )
 
@@ -244,7 +244,7 @@ def main():
           not unassigned, str(unassigned))
 
     # ---- engine binder (§20.4) --------------------------------------
-    from islemesh.islemesh_engines import bind_engine, _BINDERS
+    from islemesh.custom.islemesh_engines import bind_engine, _BINDERS
     saved = []
     # a manager complete enough to construct treeObjects
     fakemgr = type('M', (), {'objectTables': {}, 'idList': []})()
@@ -495,7 +495,7 @@ def main():
           and len(instances_of(app_rows, 'odoo')) == 1)
 
     # ---- topology coherence (joined isle x polari view) -------------
-    from islemesh.islemesh_coherence import assess_topology
+    from islemesh.custom.islemesh_coherence import assess_topology
     coh = assess_topology(
         devices=[
             {'name': 'isle-core', 'agent_present': True},
@@ -586,7 +586,7 @@ def main():
           rp3['plan'][0]['action'] == 'deploy-instance')
 
     # ---- network resource ledger (scale-without-collision) ----------
-    from islemesh.islemesh_netledger import (
+    from islemesh.custom.islemesh_netledger import (
         cidrs_overlap, pool_conflicts, port_conflicts,
         free_subnet, free_port, assess_resources)
     check('netledger: overlap detection (the econ-core case)',
@@ -614,7 +614,7 @@ def main():
           any(a['code'] == 'pool-overlap' for a in ra))
 
     # ---- UDP port ranges (mtg-0: media servers own RANGES) ----------
-    from islemesh.islemesh_netledger import (
+    from islemesh.custom.islemesh_netledger import (
         udp_range_conflicts, free_udp_range)
     check('netledger: same port different proto is NOT a conflict',
           port_conflicts([{'port': 80},
@@ -649,7 +649,7 @@ def main():
           any(a['code'] == 'udp-range-conflict' for a in ra2))
 
     # ---- synthetic-IP pools (ret-3: the mesh resolver's kind) --------
-    from islemesh.islemesh_netledger import (
+    from islemesh.custom.islemesh_netledger import (
         synthetic_pool_conflicts, free_synthetic_pool)
     sc = synthetic_pool_conflicts(
         [{'name': 'rns-isle', 'cidr': '10.77.0.0/24'},

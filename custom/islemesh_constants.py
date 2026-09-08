@@ -1,6 +1,6 @@
 """
 @cross-cutting
-@module islemesh.islemesh_constants
+@module islemesh.custom.islemesh_constants
 
 Shared vocabulary for the isle-mesh convergence module (mac-1).
 Pure constants — NO framework imports (topology_constants

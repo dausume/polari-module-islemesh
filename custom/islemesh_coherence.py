@@ -1,5 +1,5 @@
 """
-@module islemesh.islemesh_coherence
+@module islemesh.custom.islemesh_coherence
 
 The JOINED topology view: the isle topology (devices/agents/apps —
 where packets go) and the polari topology (instances of polari —
@@ -13,11 +13,11 @@ device; manipulation rides the same store/deploy machinery.
 
 @consumers
   - islemesh.islemesh_api (/api/islemesh/coherence)
-  - islemesh.selftest_islemesh (function-level)
+  - islemesh.islemesh_selftest (function-level)
 """
 
 from islemesh.islemesh_catalog import instances_of
-from islemesh.islemesh_netledger import assess_resources
+from islemesh.custom.islemesh_netledger import assess_resources
 
 #: Polari's COMPONENT scaling shape (Dustin): one frontend, one sql,
 #: one cache per instance-group — but backends are the replicable

@@ -1,5 +1,5 @@
 """
-@module islemesh.islemesh_netledger
+@module islemesh.custom.islemesh_netledger
 
 The NETWORK RESOURCE LEDGER (Dustin 2026-08-09): track the subnets/
 pools and published ports each device has allocated, so a
@@ -22,9 +22,9 @@ so they must overlap NEITHER each other NOR any docker pool on the
 host, or the resolver answers with an address docker also routes).
 
 @consumers
-  - islemesh.islemesh_coherence (per-device pools/ports + conflicts)
+  - islemesh.custom.islemesh_coherence (per-device pools/ports + conflicts)
   - islemesh.islemesh_api (/api/islemesh/coherence)
-  - islemesh.selftest_islemesh
+  - islemesh.islemesh_selftest
 """
 
 

@@ -1,6 +1,6 @@
 """
 @cross-cutting
-@module islemesh.islemesh_mock
+@module islemesh.custom.islemesh_mock
 
 The MOCK isle network (Dustin 2026-08-07): realistic payloads for
 every ingest endpoint, ALWAYS declaring `mock_network: true` — the
@@ -19,7 +19,7 @@ will use. Stdlib-only.
 
 @consumers
   - islemesh.islemesh_api (POST /api/islemesh/mock)
-  - islemesh.selftest_islemesh (parser fixtures)
+  - islemesh.islemesh_selftest (parser fixtures)
 """
 
 _FRAGMENT_POLARI = """

@@ -1,5 +1,5 @@
 """
-@module islemesh.islemesh_engines
+@module islemesh.custom.islemesh_engines
 
 The engine BINDER (handoff §20.4): turn an isle app's engine
 declaration into a live polari provider wiring. An installed isle
@@ -18,7 +18,7 @@ off.
 
 @consumers
   - islemesh.islemesh_api (ingest/engine)
-  - islemesh.selftest_islemesh
+  - islemesh.islemesh_selftest
 """
 
 
